@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "33417461-1195-4502-9c44-2d32ad6bc6a9": {
+      "ProjectGuid": "33417461-1195-4502-9c44-2d32ad6bc6a9",
+      "DisplayName": "LastDigitSumFibo",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

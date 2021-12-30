@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "9b5c7fd1-5e43-433a-864b-70877e4ad4e6": {
+      "ProjectGuid": "9b5c7fd1-5e43-433a-864b-70877e4ad4e6",
+      "DisplayName": "lastDigitFibo",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
