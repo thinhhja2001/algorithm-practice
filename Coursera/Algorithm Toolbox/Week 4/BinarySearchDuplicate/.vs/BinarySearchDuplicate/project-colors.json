@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "fa760d37-dff4-467f-ab4c-97f6c4a5f9ba": {
+      "ProjectGuid": "fa760d37-dff4-467f-ab4c-97f6c4a5f9ba",
+      "DisplayName": "BinarySearchDuplicate",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
