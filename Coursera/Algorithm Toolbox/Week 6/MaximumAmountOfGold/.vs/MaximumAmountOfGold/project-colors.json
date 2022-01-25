@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "d2919125-9a61-4eb1-8652-8ea2a01dbd12": {
+      "ProjectGuid": "d2919125-9a61-4eb1-8652-8ea2a01dbd12",
+      "DisplayName": "MaximumAmountOfGold",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
