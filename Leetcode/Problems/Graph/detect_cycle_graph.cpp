@@ -51,6 +51,12 @@ public:
 		visited[value] = true;
 		for (auto it = adjList[value].rbegin(); it != adjList[value].rend(); it++) {
 			int u = *it;
+			//
+			// 1: 2,3,4
+			// 2: 1,2
+			// If we start from 1, we will have to check the edge of (1,2), and then we start from 2, we will have to check
+			// the edge of (2,1) which will cause the unwanted cycle. Because of that, we will ignore the parent value of the next node
+			//
 			if (u == parent)continue;
 			if (u != parent && visited[u])return true;
 			return isCycleUtil(value, u, visited);
