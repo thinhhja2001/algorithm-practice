@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 #include <math.h>
 using namespace std;
 void rotate(vector<int> &nums, int k)
