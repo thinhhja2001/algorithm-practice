@@ -9,39 +9,39 @@
 
 using namespace std;
 
-struct Node {
+struct ListNode {
 public:
-	vector<Node*>children;
+	vector<ListNode*>children;
 	bool isWord;
-	Node() {
-		children = vector<Node*>(26, NULL);
+	ListNode() {
+		children = vector<ListNode*>(26, NULL);
 		isWord = false;
 	}
 };
 
 class Trie {
 public:
-	Node* root;
+	ListNode* root;
 
 	Trie() {
-		root = new Node();
+		root = new ListNode();
 	}
 
 	void insert(string s) {
-		Node* node = root;
+		ListNode* node = root;
 		node->isWord = false;
 		for (int i = 0; i < s.size(); i++) {
 			if (root->isWord)return;
 			int c = s[i] - 'a';
 			if (root->children[c] == nullptr) {
-				node->children[c] = new Node();
+				node->children[c] = new ListNode();
 			}
 			node = node->children[c];
 		}
 		node->isWord = true;
 	}
 	string findClosest(string s) {
-		Node* node = root;
+		ListNode* node = root;
 		for (int i = 0; i < s.size(); i++) {
 			int c = s[i] - 'a';
 			if (node->children[c] == nullptr) return s;
