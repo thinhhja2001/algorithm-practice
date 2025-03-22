@@ -2,6 +2,29 @@
     "files.associations": {
         "ostream": "cpp",
         "vector": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "unordered_map": "cpp",
+        "__bit_reference": "cpp",
+        "__debug": "cpp",
+        "__locale": "cpp",
+        "__mutex_base": "cpp",
+        "__split_buffer": "cpp",
+        "__threading_support": "cpp",
+        "atomic": "cpp",
+        "bitset": "cpp",
+        "exception": "cpp",
+        "initializer_list": "cpp",
+        "ios": "cpp",
+        "istream": "cpp",
+        "limits": "cpp",
+        "locale": "cpp",
+        "mutex": "cpp",
+        "new": "cpp",
+        "ratio": "cpp",
+        "sstream": "cpp",
+        "streambuf": "cpp",
+        "string": "cpp",
+        "tuple": "cpp",
+        "typeinfo": "cpp"
     }
 }
