@@ -1,5 +1,6 @@
 import java.util.ArrayDeque;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Queue;
 
 public class Dota2Senate {
@@ -23,23 +24,32 @@ public class Dota2Senate {
   }
 
   public static String predictPartyVictory(String senate) {
-    Queue<Character> queue = new ArrayDeque<>();
-    for (Character c : senate.toCharArray()) {
-      queue.add(c);
-    }
-    while (true) {
-      Character currentSenate = queue.poll();
-      queue.add(currentSenate);
-      Character c = removeNextSenate(queue, currentSenate);
-      if (c != null) {
-        break;
+    Queue<Integer> rQueue = new LinkedList<>();
+    Queue<Integer> dQueue = new LinkedList<>();
+    for (int i = 0; i < senate.length(); i++) {
+      if (senate.charAt(i) == 'R') {
+        rQueue.add(i);
+      } else {
+        dQueue.add(i);
       }
     }
-    return removeNextSenate(queue, queue.peek()) == 'R' ? "Radiant" : "Dire";
+
+    while (!rQueue.isEmpty() && !dQueue.isEmpty()) {
+      int rIndex = rQueue.poll();
+      int dIndex = dQueue.poll();
+
+      if (rIndex < dIndex) {
+        rQueue.add(rIndex + senate.length());
+      } else {
+        dQueue.add(dIndex + senate.length());
+      }
+    }
+    if(dQueue.isEmpty())  return "Radiant";
+    return "Dire";
   }
 
   public static void main(String[] args) {
-    String senate = "RRDDRRRDDRDDRRDDRDRDDDDDRDDRRRRRRRDRDDRRDRDRDRRRDDDRRDRRRDRRDRDDDDDDDDRRRDDDRDDRRDRRDRDRRRDDDDRRRDRRRRRDRRDRRDRRRDDRRRDRRRRRDRRRRDDDRRRDRDDRRDDRDRDRDRDDRDRDRRRDRRRDRRDRDDDRDRDDRDDDDRRRRDRRDRDRDRDRDRDDRDRDRDDDRRRRRDDDDDDDRRRRDRRDRDDDRDRDDDRRRRDRDRDDDDRDDRDDRRDDRRDRRRRRDRDDRDRRDDRRRDRRRRDDRRRRDDDRRDDRRRRDRRRDRRRRDDRRDDRRRDRDDDDRDDRRRDDDRDRDDRRDDRRRRRRDDRDDDDDDDRDRRDDDDRDDRRRDRRRDRDDRRRDRDDRDRRRRDRRDDDDDDRDDDRRRRRRRRDRDDDDDRDRRRRRDDRDDRRDRDDDDDDRRRDRRRDDRDRRDDRRDRDRDDRRDDRDDRRDDDRRRDDDDRRDRDDRDRDRDDDRRRRRDDDRDDDRDRRDDRRRRDRRDRRRRRDDDDRRRRRRDRRDRDDDDRRDRDDDRDDRRDRRRRDRRDDDRRRDDDRDRDRDRDDRDDDDDRRDDRRRRDDDDDRRRRDRDRDRRRDDRRRDDRRDDRDDRDRRRDRDRRRDRDRDDRRDDDDRRRRDDDRRRDDRDDDRDRRDRRRRDDRRRRDDDDDDRRDDDRDR";
+    String senate = "RD";
     System.out.println(predictPartyVictory(senate));
   }
 }
