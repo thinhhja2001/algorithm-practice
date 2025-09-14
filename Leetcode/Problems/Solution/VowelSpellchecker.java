@@ -9,21 +9,15 @@ public class VowelSpellchecker {
 
 
   public String[] spellchecker(String[] wordlist, String[] queries) {
-    HashMap<String, List<String>> lowerMapper = new HashMap<>();
-    HashMap<String, List<String>> vowelMapper = new HashMap<>();
+    HashMap<String, String> lowerMapper = new HashMap<>();
+    HashMap<String, String> vowelMapper = new HashMap<>();
     Set<String> words = new HashSet<>(Arrays.stream(wordlist).toList());
 
     for (String word : wordlist) {
       String toLower = word.toLowerCase();
-      if (!lowerMapper.containsKey(toLower)) {
-        lowerMapper.put(toLower, new ArrayList<>());
-      }
-      lowerMapper.get(toLower).add(word);
+      lowerMapper.putIfAbsent(toLower, word);
       String nonVowelVersion = toLower.replaceAll("[aeiouAEIOU]", "_");
-      if (!vowelMapper.containsKey(nonVowelVersion)) {
-        vowelMapper.put(nonVowelVersion, new ArrayList<>());
-      }
-      vowelMapper.get(nonVowelVersion).add(word);
+      vowelMapper.putIfAbsent(nonVowelVersion,word);
     }
 
     ArrayList<String> result = new ArrayList<>();
@@ -35,10 +29,10 @@ public class VowelSpellchecker {
         String lower = query.toLowerCase();
         String vowel = lower.replaceAll("[aeiouAEIOU]", "_");
         if (lowerMapper.containsKey(lower)) {
-          value = lowerMapper.get(lower).getFirst();
+          value = lowerMapper.get(lower);
         }
         if (value.equals("") && vowelMapper.containsKey(vowel)) {
-          value = vowelMapper.get(vowel).getFirst();
+          value = vowelMapper.get(vowel);
         }
       }
       result.add(value);
